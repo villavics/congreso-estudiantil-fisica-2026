@@ -531,19 +531,20 @@
     object-fit: contain;
   }
   .brand-logo.fc {
-    width: 156px;
-    height: 156px;
+    width: 148px;
+    height: 148px;
     object-fit: contain;
     border-radius: 50%;
   }
   @media (max-width: 640px) {
     .brand-logo.uabc { width: 92px; height: 92px; }
-    .brand-logo.fc { width: 98px; height: 98px; }
+    .brand-logo.fc { width: 92px; height: 92px; }
   }
 
 
   /* ── tarjetas visuales por temática para contribuciones CSV ───────────── */
   #matutina .grid,
+  #vespertina .grid,
   #posters .poster-list {
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(316px,1fr));
@@ -552,9 +553,11 @@
   }
   @media (max-width:640px){
     #matutina .grid,
+    #vespertina .grid,
     #posters .poster-list { margin-left:0; }
   }
   #matutina .card,
+  #vespertina .card,
   #posters .card.poster {
     display:flex;
     flex-direction:column;
@@ -567,12 +570,14 @@
     min-height:100%;
   }
   #matutina .card:hover,
+  #vespertina .card:hover,
   #posters .card.poster:hover {
     transform:translateY(-3px);
     box-shadow:0 10px 30px rgba(20,20,19,.10);
     border-color:var(--slate);
   }
   #matutina .card .thumb,
+  #vespertina .card .thumb,
   #posters .card.poster .thumb {
     height:132px;
     min-height:132px;
@@ -585,8 +590,10 @@
     transition:background 150ms ease;
   }
   #matutina .card:hover .thumb,
+  #vespertina .card:hover .thumb,
   #posters .card.poster:hover .thumb { background:var(--oat); }
   #matutina .card .thumb svg,
+  #vespertina .card .thumb svg,
   #posters .card.poster .thumb svg { width:100%; height:100%; overflow:visible; }
   .thumb svg .st{stroke:var(--g500);fill:none;stroke-width:2.5}
   .thumb svg .fl{fill:var(--g300)}
@@ -599,18 +606,24 @@
   .thumb svg .lc{stroke:var(--clay);stroke-width:2.5;fill:none;stroke-linecap:round}
   .thumb svg .da{stroke-dasharray:4 4}
   #matutina .card:hover .thumb svg .oa,
+  #vespertina .card:hover .thumb svg .oa,
   #posters .card.poster:hover .thumb svg .oa{fill:var(--paper)}
   #matutina .card .body,
+  #vespertina .card .body,
   #posters .card.poster .body { padding:18px 20px 16px; display:flex; flex-direction:column; flex:1; }
   .kicker{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-family:var(--mono);font-size:11px;color:var(--g500);text-transform:uppercase;letter-spacing:.05em;margin-bottom:9px}
   .kicker .badge{color:var(--paper);background:var(--uabc);padding:4px 8px;border-radius:999px;letter-spacing:.04em;margin-left:0}
   #matutina .card .title,
+  #vespertina .card .title,
   #posters .card.poster .title{font-family:var(--serif);font-size:20px;font-weight:500;line-height:1.22;color:var(--slate);margin:0 0 8px;letter-spacing:-.008em}
   #matutina .card .desc,
+  #vespertina .card .desc,
   #posters .card.poster .desc{font-size:13.5px;color:var(--g700);line-height:1.5;margin:0 0 16px;flex:1}
   #matutina .card .speaker,
+  #vespertina .card .speaker,
   #posters .card.poster .speaker{font-size:13px;color:var(--slate);border-top:1px solid var(--g100);padding-top:11px;margin-top:auto}
   #matutina .card .speaker span,
+  #vespertina .card .speaker span,
   #posters .card.poster .speaker span{color:var(--g500);font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:3px}
   .meta-line{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
   .meta-line span{font-size:11.5px;color:var(--g700);background:var(--g100);border-radius:999px;padding:5px 8px}
@@ -618,6 +631,7 @@
   #posters .poster::before{content:none}
   @media print{
     #matutina .card,
+    #vespertina .card,
     #posters .card.poster{break-inside:avoid}
   }
 
@@ -632,50 +646,59 @@
     transition:transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
   }
   .portal-card:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(20,20,19,.10); border-color:var(--slate); }
-  .portal-card .k { font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--clay); margin-bottom:10px; }
+  .portal-card .topline { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:10px; }
+  .portal-card .k { font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--clay); margin:0; }
   .portal-card .v { font-family:var(--serif); font-size:23px; line-height:1.18; color:var(--slate); letter-spacing:-.01em; }
   .portal-card .go { margin-top:18px; font-family:var(--mono); font-size:12px; color:var(--g700); }
+  .portal-icon { width:54px; height:54px; flex:0 0 auto; border:1.5px solid var(--g300); border-radius:16px; background:linear-gradient(135deg,rgba(0,114,63,.09),rgba(221,151,26,.14)); display:flex; align-items:center; justify-content:center; }
+  .portal-icon svg { width:34px; height:34px; stroke:var(--uabc); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .portal-icon svg .accent { stroke:var(--clay); }
+  .portal-card:hover .portal-icon { border-color:var(--slate); background:var(--g100); }
 
-  /* ── bloque de inauguración ───────────────────────── */
-  .schedule-window {
+
+  /* ── bloque inaugural antes de presentaciones orales ───────────── */
+  .opening-card {
     margin-left:50px;
-    background: linear-gradient(90deg, rgba(0,114,63,.13), rgba(0,114,63,.07));
-    border-left: 6px solid var(--uabc);
-    border-radius: 14px;
-    padding: 22px 26px;
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    gap: 26px;
-    align-items: center;
-    box-shadow: 0 10px 26px rgba(20,20,19,.06);
+    background:linear-gradient(135deg, rgba(0,114,63,.12), rgba(221,151,26,.10));
+    border-left:6px solid var(--uabc);
+    border-radius:14px;
+    box-shadow:0 16px 40px rgba(20,20,19,.08);
+    padding:28px 32px;
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:28px;
+    align-items:center;
   }
-  .schedule-time {
-    font-family: var(--mono);
-    font-size: clamp(32px, 5vw, 46px);
-    font-weight: 800;
-    color: var(--uabc-d);
-    line-height: 1;
-    letter-spacing: -.04em;
+  .opening-time {
+    font-family:var(--mono);
+    font-size:42px;
+    font-weight:800;
+    line-height:1;
+    letter-spacing:-.06em;
+    color:var(--uabc-d);
   }
-  .schedule-body h3 {
-    margin: 0 0 8px;
-    font-family: var(--serif);
-    font-size: 30px;
-    font-weight: 600;
-    color: var(--uabc-d);
-    letter-spacing: -.012em;
+  .opening-title {
+    font-family:var(--serif);
+    font-size:32px;
+    line-height:1.1;
+    color:var(--uabc-d);
+    font-weight:650;
+    margin:0 0 10px;
   }
-  .schedule-body p {
-    margin: 0;
-    color: var(--slate);
-    font-size: 16px;
-    font-weight: 560;
+  .opening-desc {
+    margin:0;
+    color:var(--slate);
+    font-size:16px;
+    font-weight:650;
   }
-  @media (max-width:640px){
-    .schedule-window{ margin-left:0; grid-template-columns:1fr; gap:12px; }
-    .schedule-time{ font-size:34px; }
+  @media(max-width:640px){
+    .opening-card{margin-left:0;grid-template-columns:1fr;gap:14px;padding:24px}
+    .opening-time{font-size:36px}
+    .opening-title{font-size:28px}
   }
 
+  /* Versión pública final: se ocultan controles de edición local. */
+  .fab-add, .editor-panel, .section-add-btn, .item-actions { display: none !important; }
 </style>
 </head>
 <body>
@@ -690,17 +713,15 @@
 <div>
 <div class="eyebrow">Academia de Física · Facultad de Ciencias · UABC</div>
 <h1>Congreso Estudiantil de Trabajos y Proyectos Finales de <em>Física 2026-1</em></h1>
-<p class="intro">
-          Programa preliminar para presentaciones orales y sesión de carteles. Esta versión está preparada como
-          <strong>HTML autocontenido</strong> para compartirse en Google Sites, Drive o como página web del minicongresito.
-        </p>
+<p class="intro">Programa de Trabajos y Proyectos Finales de Física 2026-1, correspondiente a presentaciones orales y sesión de carteles.</p>
 <div class="meta-row">
 <span class="meta-pill">📅 <b>Fecha:</b> 21 de mayo</span>
 <span class="meta-pill">📍 <b>Sede:</b> Audiovisual A</span>
-<span class="meta-pill">🕚 <b>Horario:</b> Hora Universitaria</span>
+<span class="meta-pill">🕚 <b>Sesión matutina:</b> 11:00 – 12:00 h</span>
+<span class="meta-pill">🌙 <b>Sesión vespertina:</b> 16:00 – 17:00 h</span>
 <span class="meta-pill">🎓 <b>Periodo:</b> 2026-1</span>
 </div>
-<nav class="toc"><a href="#programa-dia">Programa <span class="n">11:00</span></a><a href="#matutina">Presentaciones orales <span class="n">3</span></a><a href="#posters">Sesión de carteles <span class="n">25</span></a><a href="#info">Información <span class="n">4</span></a></nav>
+<nav class="toc"><a href="#programa-dia">Programa del día <span class="n">11:00</span></a><a href="#matutina">Orales matutina <span class="n">1</span></a><a href="#vespertina">Orales vespertina <span class="n">2</span></a><a href="#posters">Sesión de carteles <span class="n">permanente</span></a><a href="#info">Información <span class="n">4</span></a></nav>
 </div>
 <div class="hero-card">
 <div aria-label="Imagen del Congreso Estudiantil de Física 2026-1 sin QR de registro" class="slide-image-card">
@@ -709,62 +730,24 @@
 </div>
 </div>
 </header>
-<button class="fab-add" id="toggleEditor" title="Agregar elemento" type="button">+</button>
-<aside aria-label="Editor local de programa" class="editor-panel" id="editorPanel">
-<h3 id="editorTitle">Agregar elemento</h3>
-<p>Captura o modifica pláticas y carteles. Los cambios se guardan en este navegador.</p>
-<form class="editor-grid" id="talkForm">
-<label>Sesión
-        <select id="talkSession" required="">
-<option value="matutina">Sesión matutina</option>
-<option value="vespertina">Sesión vespertina</option>
-<option value="posters">Sesión de carteles</option>
-</select>
-</label>
-<label>Hora
-        <input id="talkTime" placeholder="11:15" type="text"/>
-</label>
-<label>Duración
-        <input id="talkDuration" placeholder="15 min" type="text" value="15 min"/>
-</label>
-<label>Título
-        <input id="talkTitle" placeholder="Título de la presentación" required="" type="text"/>
-</label>
-<label>Estudiante(s) / autoría
-        <input id="talkSpeakers" placeholder="Nombre Apellido · Nombre Apellido" required="" type="text"/>
-</label>
-<label>Área o asignatura
-        <input id="talkArea" placeholder="Física moderna / Astronomía / Óptica" type="text"/>
-</label>
-<label>Descripción breve
-        <textarea id="talkDesc" placeholder="Breve descripción del trabajo, producto o problema físico estudiado."></textarea>
-</label>
-<div class="editor-actions">
-<button class="primary" id="saveItemBtn" type="submit">Agregar a la página</button>
-<button id="exportTalks" type="button">Exportar datos</button>
-<button id="hideEditor" type="button">Ocultar</button>
-<button class="danger" id="clearTalks" type="button">Restaurar plantilla</button>
-</div>
-</form>
-<div class="editor-note">
-      Para publicar una versión fija, oculta el editor o usa esta página como versión interna. Para una versión pública definitiva conviene generar otro HTML sin este panel.
-    </div>
-</aside>
+
+
 <section id="programa-dia">
 <div class="sec-head"><span class="idx">00</span><h2>Programa del día</h2><span class="count">11:00 am</span></div>
 <p class="sec-intro">Inicio oficial del Congreso Estudiantil de Trabajos y Proyectos Finales de Física 2026-1.</p>
-<div class="schedule-window" role="group" aria-label="Inauguración a las 11:00 am">
-<div class="schedule-time">11:00</div>
-<div class="schedule-body">
-<h3>Inauguración</h3>
-<p>Mensaje inaugural de las autoridades y del comité organizador.</p>
-</div>
+<div class="opening-card" aria-label="Inauguración del congreso">
+  <div class="opening-time">11:00</div>
+  <div>
+    <h3 class="opening-title">Inauguración</h3>
+    <p class="opening-desc">Mensaje inaugural de las autoridades y del comité organizador.</p>
+  </div>
 </div>
 </section>
+
 <section id="matutina">
 <div class="sec-head"><span class="idx">01</span><h2>Presentaciones orales</h2><span class="count">3 trabajos</span></div>
-<p class="sec-intro">Trabajos registrados en modalidad oral en el formulario del Congreso Estudiantil de Física 2026-1. Los horarios específicos pueden ajustarse con el editor interactivo de la página.</p>
-<button class="section-add-btn" data-open-editor="matutina" title="Agregar presentación oral" type="button"><span>＋</span> Agregar presentación oral</button>
+<p class="sec-intro"><strong>Sesión matutina: 11:00 – 12:00 h.</strong> Incluye la inauguración y dos pláticas de 15 minutos. <strong>Sesión vespertina: 16:00 – 17:00 h.</strong> Incluye la presentación programada de proyecto de tesis.</p>
+
 <div class="grid"><article class="card managed-item" data-id="csv-oral-0">
 <div class="thumb"><svg aria-label="Mecánica clásica" role="img" viewbox="0 0 240 120"><path class="ln" d="M35 70 C55 20, 90 25, 102 64 C115 105, 158 102, 170 62 C183 20, 212 30, 220 74"></path><path class="lc" d="M35 70 C65 32, 88 39, 108 67 C130 98, 162 84, 181 58 C199 34, 215 44, 220 74"></path><circle class="sl" cx="120" cy="62" r="9"></circle><circle class="cl" cx="44" cy="66" r="7"></circle><circle class="ol" cx="210" cy="70" r="7"></circle></svg></div>
 <div class="body">
@@ -772,43 +755,37 @@
 <h3 class="title">Problema de los 3 cuerpos: El caos del cosmos</h3>
 <p class="desc">Se describirá el problema de los tres cuerpos en la gravedad newtoniana, mostrando como pequeñas variaciones en las condiciones iniciales pueden generar orbitas caóticas con apoyo de una simulación computacional</p>
 <div class="speaker"><span>Autores</span>Cristian Alvarez, Angel Leyva</div>
-<div class="meta-line"><span><b>Curso</b> Mecánica Clásica</span><span><b>Tipo</b> Proyecto Final</span><span><b>Horario</b> Por asignar</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-oral-0" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-oral-0" type="button">Eliminar</button>
-</div>
+<div class="meta-line"><span><b>Curso</b> Mecánica Clásica</span><span><b>Tipo</b> Proyecto Final</span><span><b>Horario</b> 11:15 – 11:30 h</span><span><b>Duración</b> 15 min</span></div>
+
+</div></article></div>
+</section>
+<section id="vespertina">
+<div class="sec-head"><span class="idx">02</span><h2>Sesión vespertina</h2><span class="count">2 trabajos</span></div>
+<p class="sec-intro"><strong>Sesión vespertina: 16:00 – 17:00 h.</strong> Presentaciones orales de 15 minutos.</p>
+<div class="grid"><article class="card managed-item" data-id="csv-oral-2">
+<div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
+<div class="body">
+<div class="kicker"><span class="badge">Oral</span><span>Proyecto de tesis</span></div>
+<h3 class="title">Transitorios cuánticos y tiempos de travesía en superredes finitas</h3>
+<p class="desc">Cálculo de tiempos de travesía en barreras de potencial</p>
+<div class="speaker"><span>Autores</span>Sebastian Esquivel Ibarra</div>
+<div class="meta-line"><span><b>Curso</b> Proyecto de tesis</span><span><b>Horario</b> 16:00 – 16:15 h</span><span><b>Duración</b> 15 min</span></div>
+
 </div></article><article class="card managed-item" data-id="csv-oral-1">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
 <div class="kicker"><span class="badge">Oral</span><span>Materiales, estructura atómica y cuántica</span></div>
 <h3 class="title">Elaboración de películas micro-nanoestructuradas de TiO2</h3>
-<p class="desc">Trabajo completamente experimental que combina las técnicas de erosión iónica asistida por magnetrón, fotolitografía lift-off y anodizado.</p>
+<p class="desc">Trabajo experimental que combina técnicas de erosión iónica asistida por magnetrón, fotolitografía lift-off y anodizado.</p>
 <div class="speaker"><span>Autores</span>Aniela M. Hernandez Yañez, Duilio Valdespino Padilla, J. R. Zazueta López, Ma. de la Paz Cruz Jáuregui</div>
-<div class="meta-line"><span><b>Curso</b> Estructura de la Materia</span><span><b>Tipo</b> Proyecto de tesis</span><span><b>Horario</b> Por asignar</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-oral-1" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-oral-1" type="button">Eliminar</button>
-</div>
-</div></article><article class="card managed-item" data-id="csv-oral-2">
-<div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
-<div class="body">
-<div class="kicker"><span class="badge">Oral</span><span>Proyecto de tesis</span></div>
-<h3 class="title">Transitorios Cuántico y tiempos de travesía en superredes finitas</h3>
-<p class="desc">Cálculo de tiempos de travesía en barreras de potencial</p>
-<div class="speaker"><span>Autores</span>Sebastian Esquivel Ibarra</div>
-<div class="meta-line"><span><b>Curso</b> Proyecto de tesis</span><span><b>Horario</b> Por asignar</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-oral-2" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-oral-2" type="button">Eliminar</button>
-</div>
+<div class="meta-line"><span><b>Curso</b> Estructura de la Materia</span><span><b>Tipo</b> Proyecto de tesis</span><span><b>Horario</b> 16:15 – 16:30 h</span><span><b>Duración</b> 15 min</span></div>
+
 </div></article></div>
 </section>
 <section id="posters">
-<div class="sec-head"><span class="idx">03</span><h2>Sesión de carteles</h2><span class="count">25 trabajos</span></div>
-<p class="sec-intro">Carteles registrados en el formulario del Congreso Estudiantil de Física 2026-1, organizados visualmente por temática.</p>
-<button class="section-add-btn" data-open-editor="posters" title="Agregar cartel" type="button">
-<span>＋</span> Agregar cartel
-    </button>
+<div class="sec-head"><span class="idx">03</span><h2>Sesión de carteles</h2><span class="count">23 trabajos</span></div>
+<p class="sec-intro"><strong>Exhibición permanente durante el evento.</strong> Carteles registrados en el formulario del Congreso Estudiantil de Física 2026-1, organizados visualmente por temática.</p>
+
 <div class="poster-list"><article class="card poster managed-item" data-id="csv-poster-0">
 <div class="thumb"><svg aria-label="Astrofísica" role="img" viewbox="0 0 240 120"><ellipse class="lc" cx="120" cy="60" rx="74" ry="25" transform="rotate(-8 120 60)"></ellipse><ellipse class="ln" cx="120" cy="60" rx="70" ry="26" transform="rotate(25 120 60)"></ellipse><circle class="oa" cx="120" cy="60" r="15"></circle><circle class="cl" cx="177" cy="43" r="10"></circle><circle class="ol" cx="61" cy="78" r="8"></circle></svg></div>
 <div class="body">
@@ -817,10 +794,7 @@
 <p class="desc">Estudio de estrellas de baja masa (tipos espectrales k y m) que presentan líneas de H-alpha en emisión</p>
 <div class="speaker"><span>Autores</span>Valeria González</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación en la ciencia</span><span><b>Tipo</b> Proyecto independiente</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-0" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-0" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-1">
 <div class="thumb"><svg aria-label="Probabilidad" role="img" viewbox="0 0 240 120"><rect class="wh" height="64" rx="12" width="150" x="45" y="28"></rect><path class="ln" d="M62 78 L92 54 L124 66 L158 40 L181 49"></path><circle class="ol" cx="92" cy="54" r="7"></circle><circle class="cl" cx="158" cy="40" r="8"></circle><path class="lc" d="M62 92 C86 70, 112 82, 135 62 C154 45, 171 48, 185 33"></path></svg></div>
 <div class="body">
@@ -829,10 +803,7 @@
 <p class="desc">Análisis de probabilidad de ganar un juego de tenis usando conceptos de cadenas de Markov.</p>
 <div class="speaker"><span>Autores</span>David Francisco Rodríguez Ochoa</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación de la ciencia, estadística</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-1" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-1" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-2">
 <div class="thumb"><svg aria-label="Probabilidad" role="img" viewbox="0 0 240 120"><rect class="wh" height="64" rx="12" width="150" x="45" y="28"></rect><path class="ln" d="M62 78 L92 54 L124 66 L158 40 L181 49"></path><circle class="ol" cx="92" cy="54" r="7"></circle><circle class="cl" cx="158" cy="40" r="8"></circle><path class="lc" d="M62 92 C86 70, 112 82, 135 62 C154 45, 171 48, 185 33"></path></svg></div>
 <div class="body">
@@ -841,10 +812,7 @@
 <p class="desc">Comparación del modelo teorico para el transporte de propiedades macroscópicas en los fluidos (gases) bajo el de Maxwell y el modelo de Sutherland.</p>
 <div class="speaker"><span>Autores</span>Alonso Villar Zavala</div>
 <div class="meta-line"><span><b>Curso</b> Mecánica Estadística, Teoría Cinética de Gases</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-2" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-2" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-3">
 <div class="thumb"><svg aria-label="Gravitación" role="img" viewbox="0 0 240 120"><circle class="oa" cx="92" cy="62" r="24"></circle><path class="lc" d="M41 62 C61 36, 125 30, 173 62 C126 94, 62 88, 41 62 Z"></path><circle class="cl" cx="184" cy="62" r="11"></circle><path class="ln da" d="M92 62 C122 35, 153 39, 184 62"></path></svg></div>
 <div class="body">
@@ -853,10 +821,7 @@
 <p class="desc">relaciona como la gravedad afecta a la mareas, teniendo en cuenta la contribucion del sol y la luna</p>
 <div class="speaker"><span>Autores</span>Dalila Olivares</div>
 <div class="meta-line"><span><b>Curso</b> Comunicacion de la ciencia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-3" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-3" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-4">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -865,10 +830,7 @@
 <p class="desc">Se hablara de cómo correcciones relativistas y la interacción espín–órbita en el átomo originan la estructura fina observada en el desdoblamiento de sus líneas espectrales.</p>
 <div class="speaker"><span>Autores</span>Cristian Alvarez</div>
 <div class="meta-line"><span><b>Curso</b> Estructura de la materia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-4" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-4" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-5">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -877,10 +839,7 @@
 <p class="desc">Se analizan estrategias de divulgación científica en Física y su impacto en el aprendizaje e interés de estudiantes de distintos niveles educativos.</p>
 <div class="speaker"><span>Autores</span>Elizabeth Gonzalez Aguilar</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación de la ciencia</span><span><b>Tipo</b> Parte de una tarea</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-5" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-5" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-6">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -889,10 +848,7 @@
 <p class="desc">Este trabajo analiza las propiedades superficiales del agua, como la tensión superficial, la mojabilidad y la capilaridad</p>
 <div class="speaker"><span>Autores</span>Elizabeth Gonzalez Aguilar</div>
 <div class="meta-line"><span><b>Curso</b> Estructura de la materia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-6" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-6" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-7">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -901,10 +857,7 @@
 <p class="desc">Estudio de los enlaces híbridos y las estructuras cristalinas para crecer películas delgadas de GaN y silicio (111) y sus aplicaciones.</p>
 <div class="speaker"><span>Autores</span>Xiomara Ocegueda Ortíz, Noe Ulisses Cisneros Gurrola, Paulina Castro Rodríguez</div>
 <div class="meta-line"><span><b>Curso</b> Estructura de la Materia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-7" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-7" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-8">
 <div class="thumb"><svg aria-label="Probabilidad" role="img" viewbox="0 0 240 120"><rect class="wh" height="64" rx="12" width="150" x="45" y="28"></rect><path class="ln" d="M62 78 L92 54 L124 66 L158 40 L181 49"></path><circle class="ol" cx="92" cy="54" r="7"></circle><circle class="cl" cx="158" cy="40" r="8"></circle><path class="lc" d="M62 92 C86 70, 112 82, 135 62 C154 45, 171 48, 185 33"></path></svg></div>
 <div class="body">
@@ -913,10 +866,7 @@
 <p class="desc">Estudio de modelos estadísticos usados en las casas de apuestas para medir su nivel de predicción de sucesos deportivos.</p>
 <div class="speaker"><span>Autores</span>Luis Gael Correa Fraijo</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación de la ciencia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-8" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-8" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-9">
 <div class="thumb"><svg aria-label="Gravitación" role="img" viewbox="0 0 240 120"><circle class="oa" cx="92" cy="62" r="24"></circle><path class="lc" d="M41 62 C61 36, 125 30, 173 62 C126 94, 62 88, 41 62 Z"></path><circle class="cl" cx="184" cy="62" r="11"></circle><path class="ln da" d="M92 62 C122 35, 153 39, 184 62"></path></svg></div>
 <div class="body">
@@ -925,22 +875,7 @@
 <p class="desc">Estudia brevemente las consecuencias de usar el enfoque de potenciales retardados en la teoría de gravitación de Newton.</p>
 <div class="speaker"><span>Autores</span>Angel Amador</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación de la Ciencia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-9" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-9" type="button">Eliminar</button>
-</div>
-</div></article><article class="card poster managed-item" data-id="csv-poster-10">
-<div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
-<div class="body">
-<div class="kicker"><span class="badge">Poster</span><span>Mecánica Cuántica · Proyecto de tesis</span></div>
-<h3 class="title">Entanglement and geometric phase in a triple-dot quantum shuttle with asymmetric tunnelings</h3>
-<p class="desc">Se caracteriza un sistema tipo transbordador de triple punto cuántico con tunelajes asimétricos mediante diversos indicadores.</p>
-<div class="speaker"><span>Autores</span>Ian Villegas, Fernando Rojas, Jorge Villavicencio</div>
-<div class="meta-line"><span><b>Curso</b> Mecánica Cuántica</span><span><b>Tipo</b> Proyecto de tesis</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-10" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-10" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-11">
 <div class="thumb"><svg aria-label="Astrofísica" role="img" viewbox="0 0 240 120"><ellipse class="lc" cx="120" cy="60" rx="74" ry="25" transform="rotate(-8 120 60)"></ellipse><ellipse class="ln" cx="120" cy="60" rx="70" ry="26" transform="rotate(25 120 60)"></ellipse><circle class="oa" cx="120" cy="60" r="15"></circle><circle class="cl" cx="177" cy="43" r="10"></circle><circle class="ol" cx="61" cy="78" r="8"></circle></svg></div>
 <div class="body">
@@ -949,10 +884,7 @@
 <p class="desc">Las estrellas no son solo un punto brillante en el cielo</p>
 <div class="speaker"><span>Autores</span>Sean Venus, Noe Cisneros, David Perez</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación de la ciencia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-11" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-11" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-12">
 <div class="thumb"><svg aria-label="Astrofísica" role="img" viewbox="0 0 240 120"><ellipse class="lc" cx="120" cy="60" rx="74" ry="25" transform="rotate(-8 120 60)"></ellipse><ellipse class="ln" cx="120" cy="60" rx="70" ry="26" transform="rotate(25 120 60)"></ellipse><circle class="oa" cx="120" cy="60" r="15"></circle><circle class="cl" cx="177" cy="43" r="10"></circle><circle class="ol" cx="61" cy="78" r="8"></circle></svg></div>
 <div class="body">
@@ -961,10 +893,7 @@
 <p class="desc">Analiza las limitaciones físicas y tecnológicas qué impiden desarrollar una cámara capaz de detectar todo el espectro electromagnético, así como las posibilidades reales de los sistemas multiespectrales modernos. Ademas se estudia la importancia del espectro electromagnético en la observación científica, la astronomía y la comunicación pública de la ciencia.</p>
 <div class="speaker"><span>Autores</span>Angel Israel Orduño Urrea</div>
 <div class="meta-line"><span><b>Curso</b> Óptica, Teoria Electromagnética, Comunicación de la Ciencia</span><span><b>Tipo</b> Trabajo</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-12" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-12" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-13">
 <div class="thumb"><svg aria-label="Mecánica clásica" role="img" viewbox="0 0 240 120"><path class="ln" d="M35 70 C55 20, 90 25, 102 64 C115 105, 158 102, 170 62 C183 20, 212 30, 220 74"></path><path class="lc" d="M35 70 C65 32, 88 39, 108 67 C130 98, 162 84, 181 58 C199 34, 215 44, 220 74"></path><circle class="sl" cx="120" cy="62" r="9"></circle><circle class="cl" cx="44" cy="66" r="7"></circle><circle class="ol" cx="210" cy="70" r="7"></circle></svg></div>
 <div class="body">
@@ -973,10 +902,7 @@
 <p class="desc">Análisis de la dinámica de las montañas rusas y cómo se complementan los métodos de Newton, D'Alembert y Lagrange para diseñarlas.</p>
 <div class="speaker"><span>Autores</span>Daniela Saraí Coronel Zavala, Fernanda Fuentes Méndez, Paulina Castro Rodríguez, Xiomara Ocegueda Ortíz</div>
 <div class="meta-line"><span><b>Curso</b> Mecánica Clásica</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-13" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-13" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-14">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -985,10 +911,7 @@
 <p class="desc">Poster que funciona como proyecto final del curso de Estructura de la Materia. El poster trata sobre los relojes atómicos, qué son, el concepto de la estructura hiperfina, diagramas y aplicaciones.</p>
 <div class="speaker"><span>Autores</span>Josué Sánchez, Juan Pablo Ortega, Ian Medina, Alberto Aguirre</div>
 <div class="meta-line"><span><b>Curso</b> Estructura de la Materia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-14" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-14" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-15">
 <div class="thumb"><svg aria-label="Mecánica clásica" role="img" viewbox="0 0 240 120"><path class="ln" d="M35 70 C55 20, 90 25, 102 64 C115 105, 158 102, 170 62 C183 20, 212 30, 220 74"></path><path class="lc" d="M35 70 C65 32, 88 39, 108 67 C130 98, 162 84, 181 58 C199 34, 215 44, 220 74"></path><circle class="sl" cx="120" cy="62" r="9"></circle><circle class="cl" cx="44" cy="66" r="7"></circle><circle class="ol" cx="210" cy="70" r="7"></circle></svg></div>
 <div class="body">
@@ -997,10 +920,7 @@
 <p class="desc">Este es un trabajo extra que se decidió realizar como parte de la clase de Mecánica clásica. En este poster se espone qué es el efecto coriolis junto a tres fenomenos naturales que ocurren influenciados por éste, el poster es de caracter divulgativo.</p>
 <div class="speaker"><span>Autores</span>Josué Sánchez, Alberto Aguirre, Ian Medina, Juan Pablo Ortega.</div>
 <div class="meta-line"><span><b>Curso</b> Mecánica Clásica.</span><span><b>Tipo</b> Trabajo</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-15" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-15" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-16">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -1009,10 +929,7 @@
 <p class="desc">Verificación experimental de las desigualdades de Bell mediante fotones entrelazados.</p>
 <div class="speaker"><span>Autores</span>Daniela Saraí Coronel Zavala, Hector Eduardo Rangel Peraza, Fernanda Fuentes Méndez, Xiomara Ocegueda Ortíz</div>
 <div class="meta-line"><span><b>Curso</b> Estructura de la Materia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-16" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-16" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-17">
 <div class="thumb"><svg aria-label="Gravitación" role="img" viewbox="0 0 240 120"><circle class="oa" cx="92" cy="62" r="24"></circle><path class="lc" d="M41 62 C61 36, 125 30, 173 62 C126 94, 62 88, 41 62 Z"></path><circle class="cl" cx="184" cy="62" r="11"></circle><path class="ln da" d="M92 62 C122 35, 153 39, 184 62"></path></svg></div>
 <div class="body">
@@ -1021,10 +938,7 @@
 <p class="desc">Mejores metodos geoelectricos para la busqueda de acuideros en BCS, siendo del tipo de investigación de revisión bibliográfica</p>
 <div class="speaker"><span>Autores</span>Dan Yahel Alvarado Osuna</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación de la ciencia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-17" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-17" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-18">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -1033,22 +947,7 @@
 <p class="desc">Estudio de los materiales experimental, a través de ablación láser, para distinguir configuraciones que cambian la mojabilidad del material</p>
 <div class="speaker"><span>Autores</span>Alexis López</div>
 <div class="meta-line"><span><b>Curso</b> Óptica</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-18" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-18" type="button">Eliminar</button>
-</div>
-</div></article><article class="card poster managed-item" data-id="csv-poster-19">
-<div class="thumb"><svg aria-label="Mecánica clásica" role="img" viewbox="0 0 240 120"><path class="ln" d="M35 70 C55 20, 90 25, 102 64 C115 105, 158 102, 170 62 C183 20, 212 30, 220 74"></path><path class="lc" d="M35 70 C65 32, 88 39, 108 67 C130 98, 162 84, 181 58 C199 34, 215 44, 220 74"></path><circle class="sl" cx="120" cy="62" r="9"></circle><circle class="cl" cx="44" cy="66" r="7"></circle><circle class="ol" cx="210" cy="70" r="7"></circle></svg></div>
-<div class="body">
-<div class="kicker"><span class="badge">Poster</span><span>Mecánica clásica y sistemas dinámicos</span></div>
-<h3 class="title">Simetrías Continuas en la Física: Aplicaciones de la Teoría de Lie</h3>
-<p class="desc">La teoría de Lie combina la teoría de grupos, el análisis, y la topología, para poder brindarnos un mejor entendimiento acerca de simetrías continuas como las que se ven en la vida real. Este trabajo se basa en explicar cómo se aplica la Teoría de Lie a la mecánica clásica y la física en general.</p>
-<div class="speaker"><span>Autores</span>Saúl Azuara</div>
-<div class="meta-line"><span><b>Curso</b> Mecánica Clásica, Teoría de Grupos</span><span><b>Tipo</b> Proyecto independiente</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-19" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-19" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-20">
 <div class="thumb"><svg aria-label="Gravitación" role="img" viewbox="0 0 240 120"><circle class="oa" cx="92" cy="62" r="24"></circle><path class="lc" d="M41 62 C61 36, 125 30, 173 62 C126 94, 62 88, 41 62 Z"></path><circle class="cl" cx="184" cy="62" r="11"></circle><path class="ln da" d="M92 62 C122 35, 153 39, 184 62"></path></svg></div>
 <div class="body">
@@ -1057,10 +956,7 @@
 <p class="desc">Análisis de como la divulgación científica favoreció al crecimiento poblacional del lince ibérico en España</p>
 <div class="speaker"><span>Autores</span>Morcuende Mena Maria</div>
 <div class="meta-line"><span><b>Curso</b> Comunicación científica</span><span><b>Tipo</b> Parte de una tarea</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-20" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-20" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-21">
 <div class="thumb"><svg aria-label="Mecánica clásica" role="img" viewbox="0 0 240 120"><path class="ln" d="M35 70 C55 20, 90 25, 102 64 C115 105, 158 102, 170 62 C183 20, 212 30, 220 74"></path><path class="lc" d="M35 70 C65 32, 88 39, 108 67 C130 98, 162 84, 181 58 C199 34, 215 44, 220 74"></path><circle class="sl" cx="120" cy="62" r="9"></circle><circle class="cl" cx="44" cy="66" r="7"></circle><circle class="ol" cx="210" cy="70" r="7"></circle></svg></div>
 <div class="body">
@@ -1069,10 +965,7 @@
 <p class="desc">Puntos de Lagrange, contexto historico y soluciones de equilibrio en el problema restringido de tres cuerpos.</p>
 <div class="speaker"><span>Autores</span>Luis Alberto Garcia Lopez, Carlos Adrián Navarro Navarro</div>
 <div class="meta-line"><span><b>Curso</b> Mecánica clásica</span><span><b>Tipo</b> Parte de una tarea</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-21" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-21" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-22">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -1081,10 +974,7 @@
 <p class="desc">El desarrollo de las rayos X y su aplicación en la medicina.</p>
 <div class="speaker"><span>Autores</span>Camila Chavez Montoya, Angel Miguel Leyva Rojas, Fernanda Gabriela Duarte Mellado, Carlos Adolfo Castillo Martinez</div>
 <div class="meta-line"><span><b>Curso</b> Fisica Moderna</span><span><b>Tipo</b> Trabajo</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-22" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-22" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-23">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -1093,10 +983,7 @@
 <p class="desc">Presentación de diversos enlaces atómicos poco convencionales, ya sea porque son intuitivamente imposibles o existe una molécula mucho más abundante con los mismos elementos. Esto abordado desde una perspectiva electrónica.</p>
 <div class="speaker"><span>Autores</span>Carlos Adrián Navarro Navarro, Luis Alberto García López</div>
 <div class="meta-line"><span><b>Curso</b> Estructura de la materia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-23" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-23" type="button">Eliminar</button>
-</div>
+
 </div></article><article class="card poster managed-item" data-id="csv-poster-24">
 <div class="thumb"><svg aria-label="Materiales" role="img" viewbox="0 0 240 120"><rect class="wh" height="58" rx="8" width="120" x="52" y="30"></rect><path class="lc" d="M68 76 L90 52 L112 68 L137 42 L158 57"></path><circle class="cl" cx="90" cy="52" r="7"></circle><circle class="ol" cx="137" cy="42" r="7"></circle><path class="ln" d="M188 32 v52 M162 58 h52"></path><circle class="oa" cx="188" cy="58" r="16"></circle></svg></div>
 <div class="body">
@@ -1105,10 +992,7 @@
 <p class="desc">Estudio de los enlaces híbridos, las estructuras cristalinas de los semiconductores GaN y Si (111) y sus aplicaciones.</p>
 <div class="speaker"><span>Autores</span>Noe Ulisses Cisneros Gurrola, Paulina Castro Rodríguez, Xiomara Ocegueda Ortíz</div>
 <div class="meta-line"><span><b>Curso</b> Estructura de la Materia</span><span><b>Tipo</b> Proyecto Final</span></div>
-<div class="item-actions">
-<button class="edit-item" data-edit-item="csv-poster-24" type="button">Modificar</button>
-<button class="remove-talk" data-remove-item="csv-poster-24" type="button">Eliminar</button>
-</div>
+
 </div></article></div>
 </section>
 <section id="info">
@@ -1117,7 +1001,7 @@
 <div class="info-grid">
 <div class="info-box"><div class="k">Ubicación</div><div class="v">Audiovisual A</div></div>
 <div class="info-box"><div class="k">Fecha</div><div class="v">21 de mayo</div></div>
-<div class="info-box"><div class="k">Horarios</div><div class="v">Por asignar<br/>3 orales · 25 carteles</div></div>
+<div class="info-box"><div class="k">Horarios</div><div class="v">Sesión matutina: 11:00 – 12:00 h<br/>Sesión vespertina: 16:00 – 17:00 h<br/>Carteles: exhibición permanente</div></div>
 <div class="info-box"><div class="k">Organiza</div><div class="v">Academia de Física<br/>Facultad de Ciencias, UABC</div></div>
 </div>
 </section>
@@ -1125,18 +1009,36 @@
 <div class="sec-head"><span class="idx">05</span><h2>Participantes y organización</h2><span class="count">consulta</span></div>
 <p class="sec-intro">Accesos rápidos a la relación de participantes y al comité organizador del evento.</p>
 <div class="portal-grid">
-<a class="portal-card" href="estudiantes_participantes.html" rel="noopener" target="_blank"><div><div class="k">Abrir relación</div><div class="v">Lista de estudiantes participantes en el Congreso Estudiantil<br/>de Trabajos y Proyectos Finales de Física 2026-1</div></div><div class="go">Ver lista alfabética →</div></a>
-<a class="portal-card" href="organizadores.html" rel="noopener" target="_blank"><div><div class="k">Abrir relación</div><div class="v">Organizadores del evento</div></div><div class="go">Ver organizadores →</div></a>
-<a class="portal-card" href="colaboradores.html" rel="noopener" target="_blank"><div><div class="k">Abrir relación</div><div class="v">Colaboradores</div></div><div class="go">Ver colaboradores →</div></a>
+<a class="portal-card" href="estudiantes_participantes.html" rel="noopener" target="_blank">
+  <div>
+    <div class="topline"><div class="k">Abrir relación</div><div class="portal-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M11 14h19a5 5 0 0 1 5 5v19H16a5 5 0 0 0-5 5V14Z"/><path d="M35 19h2a4 4 0 0 1 4 4v15h-6"/><path class="accent" d="M17 22h11M17 28h11M17 34h7"/><path class="accent" d="M32 8l8 4-8 4-8-4 8-4Z"/></svg></div></div>
+    <div class="v">Lista de estudiantes participantes en el Congreso Estudiantil<br/>de Trabajos y Proyectos Finales de Física 2026-1</div>
+  </div>
+  <div class="go">Ver lista alfabética →</div>
+</a>
+<a class="portal-card" href="organizadores.html" rel="noopener" target="_blank">
+  <div>
+    <div class="topline"><div class="k">Abrir relación</div><div class="portal-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="6"/><path d="M14 40a10 10 0 0 1 20 0"/><path class="accent" d="M8 18h6M34 18h6M24 4v6M11 8l4 4M37 8l-4 4"/><path class="accent" d="M24 28v5"/></svg></div></div>
+    <div class="v">Organizadores del evento</div>
+  </div>
+  <div class="go">Ver organizadores →</div>
+</a>
+<a class="portal-card" href="colaboradores.html" rel="noopener" target="_blank">
+  <div>
+    <div class="topline"><div class="k">Abrir relación</div><div class="portal-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="16" cy="18" r="5"/><circle cx="32" cy="18" r="5"/><circle cx="24" cy="30" r="5"/><path d="M7 39a9 9 0 0 1 18 0"/><path d="M23 39a9 9 0 0 1 18 0"/><path class="accent" d="M20 22l4 4 4-4"/></svg></div></div>
+    <div class="v">Colaboradores</div>
+  </div>
+  <div class="go">Ver colaboradores →</div>
+</a>
 </div>
 </section><footer>
-<span class="k">Programa editable para el minicongresito de Física 2026-1.</span>
+<span class="k">Programa de Trabajos y Proyectos Finales de Física 2026-1.</span>
 <span>Academia de Física · Facultad de Ciencias · UABC</span>
 </footer>
 </div>
 <script>
 (function(){
-  const STORAGE_KEY = 'minicongreso_fisica_2026_1_programa_csv_v6_28_trabajos';
+  const STORAGE_KEY = 'minicongreso_fisica_2026_1_programa_csv_v8_matutina_vespertina';
   const panel = document.getElementById('editorPanel');
   const toggle = document.getElementById('toggleEditor');
   const hide = document.getElementById('hideEditor');
@@ -1208,8 +1110,8 @@
         "id": "csv-oral-0",
         "kind": "talk",
         "session": "matutina",
-        "time": "Por asignar",
-        "duration": "Oral",
+        "time": "11:15 – 11:30 h",
+        "duration": "15 min",
         "title": "Problema de los 3 cuerpos: El caos del cosmos",
         "speakers": "Cristian Alvarez, Angel Leyva",
         "area": "Mecánica Clásica · Proyecto Final",
@@ -1229,13 +1131,13 @@
     {
         "id": "csv-oral-1",
         "kind": "talk",
-        "session": "matutina",
-        "time": "Por asignar",
-        "duration": "Oral",
+        "session": "vespertina",
+        "time": "16:15 – 16:30 h",
+        "duration": "15 min",
         "title": "Elaboración de películas micro-nanoestructuradas de TiO2",
         "speakers": "Aniela M. Hernandez Yañez, Duilio Valdespino Padilla, J. R. Zazueta López, Ma. de la Paz Cruz Jáuregui",
         "area": "Estructura de la Materia · Proyecto de tesis",
-        "desc": "Trabajo completamente experimental que combina las técnicas de erosión iónica asistida por magnetrón, fotolitografía lift-off y anodizado."
+        "desc": "Trabajo experimental que combina técnicas de erosión iónica asistida por magnetrón, fotolitografía lift-off y anodizado."
     },
     {
         "id": "csv-poster-4",
@@ -1302,17 +1204,6 @@
         "speakers": "Angel Amador",
         "area": "Comunicación de la Ciencia · Proyecto Final",
         "desc": "Estudia brevemente las consecuencias de usar el enfoque de potenciales retardados en la teoría de gravitación de Newton."
-    },
-    {
-        "id": "csv-poster-10",
-        "kind": "poster",
-        "session": "posters",
-        "time": "",
-        "duration": "Cartel",
-        "title": "Entanglement and geometric phase in a triple-dot quantum shuttle with asymmetric tunnelings",
-        "speakers": "Ian Villegas, Fernando Rojas, Jorge Villavicencio",
-        "area": "Mecánica Cuántica · Proyecto de tesis",
-        "desc": "Se caracteriza un sistema tipo transbordador de triple punto cuántico con tunelajes asimétricos mediante diversos indicadores."
     },
     {
         "id": "csv-poster-11",
@@ -1403,23 +1294,12 @@
         "desc": "Estudio de los materiales experimental, a través de ablación láser, para distinguir configuraciones que cambian la mojabilidad del material"
     },
     {
-        "id": "csv-poster-19",
-        "kind": "poster",
-        "session": "posters",
-        "time": "",
-        "duration": "Cartel",
-        "title": "Simetrías Continuas en la Física: Aplicaciones de la Teoría de Lie",
-        "speakers": "Saúl Azuara",
-        "area": "Mecánica Clásica, Teoría de Grupos · Proyecto independiente",
-        "desc": "La teoría de Lie combina la teoría de grupos, el análisis, y la topología, para poder brindarnos un mejor entendimiento acerca de simetrías continuas como las que se ven en la vida real. Este trabajo se basa en explicar cómo se aplica la Teoría de Lie a la mecánica clásica y la física en general."
-    },
-    {
         "id": "csv-oral-2",
         "kind": "talk",
-        "session": "matutina",
-        "time": "Por asignar",
-        "duration": "Oral",
-        "title": "Transitorios Cuántico y tiempos de travesía en superredes finitas",
+        "session": "vespertina",
+        "time": "16:00 – 16:15 h",
+        "duration": "15 min",
+        "title": "Transitorios cuánticos y tiempos de travesía en superredes finitas",
         "speakers": "Sebastian Esquivel Ibarra",
         "area": "Proyecto de tesis",
         "desc": "Cálculo de tiempos de travesía en barreras de potencial"
@@ -1520,6 +1400,7 @@
     if(raw[0]) pieces.push(`<span><b>Curso</b> ${esc(raw[0])}</span>`);
     if(raw[1]) pieces.push(`<span><b>Tipo</b> ${esc(raw[1])}</span>`);
     if(item.session !== 'posters' && item.time) pieces.push(`<span><b>Horario</b> ${esc(item.time)}</span>`);
+    if(item.session !== 'posters' && item.duration) pieces.push(`<span><b>Duración</b> ${esc(item.duration)}</span>`);
     return pieces.join('');
   }
 
@@ -1551,7 +1432,7 @@
     article.innerHTML = `
       <div class="thumb">${thumbSvg(item)}</div>
       <div class="body">
-        <div class="kicker"><span class="badge">${esc(item.duration || 'Oral')}</span><span>${esc(theme)}</span></div>
+        <div class="kicker"><span class="badge">Oral</span><span>${esc(theme)}</span></div>
         <h3 class="title">${esc(item.title)}</h3>
         <p class="desc">${esc(item.desc || 'Presentación oral del programa 2026-1.')}</p>
         <div class="speaker"><span>Autores</span>${esc(item.speakers || 'Por confirmar')}</div>
